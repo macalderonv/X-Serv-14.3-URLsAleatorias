@@ -4,8 +4,8 @@ import socket
 import random
 
 mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-mySocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-mySocket.bind((socket.gethostname(), 1234))
+
+mySocket.bind(('localhost', 1234))
 mySocket.listen(5)
 
 try:
@@ -20,10 +20,13 @@ try:
         print(recvSocket.recv(2048))
 
         recvSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" +
-        b"<html><body><h1>Hello!!</h1></body></html>" +
-        bytes('<a href=' + url + '>Dame otra</a>\r\n', 'utf-8') +
-        b"\r\n")
+                        b"<html><body><h1>Hello!!</h1>" + 
+                        bytes('<a href=' + url + '>Dame otra</a>\r\n', 'utf-8') +
+                        b"</p>" +
+                        b"</body></html>" +
+                        b"\r\n")
         recvSocket.close()
+        
 except KeyboardInterrupt:
     print("Closing binded socket")
     mySocket.close()
