@@ -10,7 +10,7 @@ mySocket.listen(5)
 
 try:
     while True:
-        numero = random.randint(1, 1000000)
+        numero = random.randint(1, 1000000000)
         url = "http://localhost:1234/" + str(numero)
 
         print('Waiting for connections')
