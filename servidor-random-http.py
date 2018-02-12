@@ -19,11 +19,11 @@ try:
         print('Request received:')
         print(recvSocket.recv(2048))
 
-        recvSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" +
-                        b"<html><body><h1>Hello!!</h1>" + 
-                        bytes('<a href=' + url + '>Dame otra</a>\r\n', 'utf-8') +
-                        b"</p>" +
-                        b"</body></html>" +
+        recvSocket.send(b"HTTP/1.1 200 OK\r\n\r\n"+
+                        b"<html><body><h1>Hello!!</h1>"+ 
+                        bytes('<a href=' + url + '>Dame otra</a>\r\n', 'utf-8')+
+                        b"</p>"+
+                        b"</body></html>"+
                         b"\r\n")
         recvSocket.close()
         
