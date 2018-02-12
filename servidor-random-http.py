@@ -10,7 +10,7 @@ mySocket.listen(5)
 
 try:
     while True:
-        numero = random.randint(1, 1000000)
+        numero = random.randint(1, 100000000)
         url = "http://localhost:1234/" + str(numero)
 
         print('Waiting for connections')
@@ -22,7 +22,6 @@ try:
         recvSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" +
                         b"<html><body><h1>Hello!!</h1>" + 
                         bytes('<a href=' + url + '>Dame otra</a>\r\n', 'utf-8') +
-                        b"</p>" +
                         b"</body></html>" +
                         b"\r\n")
         recvSocket.close()
